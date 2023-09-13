@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 
+// Toastify
+import { toast } from 'react-toastify';
+
 // Redux hooks
 import { useDispatch, useSelector } from 'react-redux';
 // Slices
@@ -37,7 +40,7 @@ function LoginScreen() {
       dispatch(setCredentials({ ...res }));
       navigate('/');
     } catch (err) {
-      console.log(err?.data.message || err.error);
+      toast.error(err?.data.message || err.error);
     }
   };
 
